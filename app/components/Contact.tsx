@@ -1,10 +1,9 @@
-/* eslint-disable react/no-unescaped-entities */
 const Contact = () => {
     return (
       <section id="contact" className="py-16 bg-gray-800 text-white text-center">
         <h2 className="text-3xl font-bold mb-6">Contact</h2>
         <p className="mb-4">
-          N'hésitez pas à me contacter pour toute question ou collaboration. Je serais ravi de discuter avec vous !
+          N&apos;hésitez pas à me contacter pour toute question ou collaboration. Je serais ravi de discuter avec vous !
         </p>
         <div className="mb-6">
           <p className="mb-4">

@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const Skills = () => {
     const skills = {
-        "Systèmes d&apos;Exploitation": [
+        "Systèmes d'Exploitation": [
             { name: "Windows", icon: "/icons/windows.png" },
             { name: "Linux", icon: "/icons/linux.png" },
         ],
@@ -31,13 +31,13 @@ const Skills = () => {
         ],
         "Compétences Interpersonnelles": [
             { name: "Bonne communication", icon: "/icons/communication.png" },
-            { name: "Bonne capacité d’analyse", icon: "/icons/analytics.png" },
+            { name: "Bonne capacité d’analyse", icon: "/icons/analysis.png" },
             { name: "Autonome", icon: "/icons/autonomy.png" },
         ],
     };
 
     const categoryColors = {
-        "Systèmes d&apos;Exploitation": "bg-blue-600",
+        "Systèmes d'Exploitation": "bg-blue-600",
         "Outils et Environnements": "bg-green-600",
         "Gestion de Versions et Collaboration": "bg-purple-600",
         "Langages de Programmation": "bg-yellow-600",

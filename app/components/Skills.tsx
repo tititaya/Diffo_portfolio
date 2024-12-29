@@ -31,7 +31,7 @@ const Skills = () => {
         ],
         "Compétences Interpersonnelles": [
             { name: "Bonne communication", icon: "/icons/communication.png" },
-            { name: "Bonne capacité d’analyse", icon: "/icons/analysis.png" },
+            { name: "Bonne capacité d’analyse", icon: "/icons/analytics.png" },
             { name: "Autonome", icon: "/icons/autonomy.png" },
         ],
     };
@@ -53,7 +53,11 @@ const Skills = () => {
                 </h2>
                 {Object.entries(skills).map(([category, items]) => (
                     <div key={category} className="mb-12">
-                        <h3 className={`text-2xl font-bold text-white ${categoryColors[category]} p-3 rounded-lg shadow-md mb-4`}>
+                        <h3
+                            className={`text-2xl font-bold text-white ${
+                                categoryColors[category] || "bg-gray-600"
+                            } p-3 rounded-lg shadow-md mb-4`}
+                        >
                             {category}
                         </h3>
                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
@@ -69,7 +73,9 @@ const Skills = () => {
                                         height={48}
                                         className="mx-auto mb-4"
                                     />
-                                    <p className="text-gray-800 font-medium text-lg">{skill.name}</p>
+                                    <p className="text-gray-800 font-medium text-lg">
+                                        {skill.name}
+                                    </p>
                                 </div>
                             ))}
                         </div>

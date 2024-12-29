@@ -1,8 +1,6 @@
-import Image from 'next/image';
-
 const Skills = () => {
     const skills = {
-        "Systèmes d&apos;Exploitation": [
+        "Systèmes d'Exploitation": [
             { name: "Windows", icon: "/icons/windows.png" },
             { name: "Linux", icon: "/icons/linux.png" },
         ],
@@ -31,18 +29,9 @@ const Skills = () => {
         ],
         "Compétences Interpersonnelles": [
             { name: "Bonne communication", icon: "/icons/communication.png" },
-            { name: "Bonne capacité d’analyse", icon: "/icons/analytics.png" },
+            { name: "Bonne capacité d’analyse", icon: "/icons/analysis.png" },
             { name: "Autonome", icon: "/icons/autonomy.png" },
         ],
-    };
-
-    const categoryColors = {
-        "Systèmes d&apos;Exploitation": "bg-blue-600",
-        "Outils et Environnements": "bg-green-600",
-        "Gestion de Versions et Collaboration": "bg-purple-600",
-        "Langages de Programmation": "bg-yellow-600",
-        "Outils et Logiciels": "bg-red-600",
-        "Compétences Interpersonnelles": "bg-indigo-600",
     };
 
     return (
@@ -53,29 +42,23 @@ const Skills = () => {
                 </h2>
                 {Object.entries(skills).map(([category, items]) => (
                     <div key={category} className="mb-12">
-                        <h3
-                            className={`text-2xl font-bold text-white ${
-                                categoryColors[category] || "bg-gray-600"
-                            } p-3 rounded-lg shadow-md mb-4`}
-                        >
+                        {/* Titre de la catégorie */}
+                        <h3 className="text-2xl font-bold text-white bg-blue-600 p-3 rounded-lg shadow-md mb-4">
                             {category}
                         </h3>
+                        {/* Icônes des compétences */}
                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
                             {items.map((skill, index) => (
                                 <div
                                     key={index}
-                                    className="bg-white shadow-md p-6 rounded-md hover:shadow-lg hover:bg-blue-100 transition duration-300 transform hover:scale-105"
+                                    className="bg-white shadow-md p-6 rounded-md hover:shadow-lg hover:bg-blue-100 transition duration-300"
                                 >
-                                    <Image
+                                    <img
                                         src={skill.icon || "/icons/default-icon.png"}
                                         alt={`Icône de ${skill.name}`}
-                                        width={48}
-                                        height={48}
-                                        className="mx-auto mb-4"
+                                        className="w-12 h-12 mx-auto mb-4"
                                     />
-                                    <p className="text-gray-800 font-medium text-lg">
-                                        {skill.name}
-                                    </p>
+                                    <p className="text-gray-800 font-medium text-lg">{skill.name}</p>
                                 </div>
                             ))}
                         </div>

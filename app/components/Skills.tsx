@@ -1,6 +1,8 @@
+import Image from 'next/image';
+
 const Skills = () => {
     const skills = {
-        "Systèmes d'Exploitation": [
+        "Systèmes d&apos;Exploitation": [
             { name: "Windows", icon: "/icons/windows.png" },
             { name: "Linux", icon: "/icons/linux.png" },
         ],
@@ -34,6 +36,15 @@ const Skills = () => {
         ],
     };
 
+    const categoryColors = {
+        "Systèmes d&apos;Exploitation": "bg-blue-600",
+        "Outils et Environnements": "bg-green-600",
+        "Gestion de Versions et Collaboration": "bg-purple-600",
+        "Langages de Programmation": "bg-yellow-600",
+        "Outils et Logiciels": "bg-red-600",
+        "Compétences Interpersonnelles": "bg-indigo-600",
+    };
+
     return (
         <section id="skills" className="py-16 bg-gray-100">
             <div className="container mx-auto">
@@ -42,21 +53,21 @@ const Skills = () => {
                 </h2>
                 {Object.entries(skills).map(([category, items]) => (
                     <div key={category} className="mb-12">
-                        {/* Titre de la catégorie */}
-                        <h3 className="text-2xl font-bold text-white bg-blue-600 p-3 rounded-lg shadow-md mb-4">
+                        <h3 className={`text-2xl font-bold text-white ${categoryColors[category]} p-3 rounded-lg shadow-md mb-4`}>
                             {category}
                         </h3>
-                        {/* Icônes des compétences */}
                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
                             {items.map((skill, index) => (
                                 <div
                                     key={index}
-                                    className="bg-white shadow-md p-6 rounded-md hover:shadow-lg hover:bg-blue-100 transition duration-300"
+                                    className="bg-white shadow-md p-6 rounded-md hover:shadow-lg hover:bg-blue-100 transition duration-300 transform hover:scale-105"
                                 >
-                                    <img
+                                    <Image
                                         src={skill.icon || "/icons/default-icon.png"}
                                         alt={`Icône de ${skill.name}`}
-                                        className="w-12 h-12 mx-auto mb-4"
+                                        width={48}
+                                        height={48}
+                                        className="mx-auto mb-4"
                                     />
                                     <p className="text-gray-800 font-medium text-lg">{skill.name}</p>
                                 </div>

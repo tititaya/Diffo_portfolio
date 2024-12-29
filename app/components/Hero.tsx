@@ -28,7 +28,7 @@ const Hero = () => {
       <div className="relative">
         <Image
           src="/images/diffo.jpg"
-          alt="Photo de profil d'Ornel Rony"
+          alt="Photo de profil d&apos;Ornel Rony"
           width={200}
           height={200}
           className="rounded-full shadow-lg"
@@ -39,7 +39,7 @@ const Hero = () => {
       {/* Nom et présentation */}
       <h2 className="text-4xl font-bold mt-4">Hey 👋, Je suis Ornel Rony</h2>
       <p className="text-lg mt-4 max-w-lg">
-        Étudiant en M1 Systèmes Embarqués, passionné par l’électronique, le développement de
+        Étudiant en M1 Systèmes Embarqués, passionné par l&apos;électronique, le développement de
         systèmes embarqués, et la résolution de problèmes techniques.
       </p>
 
@@ -63,7 +63,7 @@ const Hero = () => {
       <div className="mt-10 grid grid-cols-3 gap-4">
         <div className="flex flex-col items-center">
           <span className="text-4xl font-bold">{experience}+</span>
-          <p>Ans d'expérience</p>
+          <p>Ans d&apos;expérience</p>
         </div>
         <div className="flex flex-col items-center">
           <span className="text-4xl font-bold">{projects}+</span>

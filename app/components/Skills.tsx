@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const Skills = () => {
     const skills = {
         "Systèmes d'Exploitation": [
@@ -53,12 +55,16 @@ const Skills = () => {
                                     key={index}
                                     className="bg-white shadow-md p-6 rounded-md hover:shadow-lg hover:bg-blue-100 transition duration-300"
                                 >
-                                    <img
+                                    <Image
                                         src={skill.icon || "/icons/default-icon.png"}
                                         alt={`Icône de ${skill.name}`}
-                                        className="w-12 h-12 mx-auto mb-4"
+                                        width={48}
+                                        height={48}
+                                        className="mx-auto mb-4"
                                     />
-                                    <p className="text-gray-800 font-medium text-lg">{skill.name}</p>
+                                    <p className="text-gray-800 font-medium text-lg">
+                                        {skill.name}
+                                    </p>
                                 </div>
                             ))}
                         </div>

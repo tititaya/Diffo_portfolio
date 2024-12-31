@@ -4,18 +4,154 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #f8f9fa; /* Texte clair adapté au fond sombre */
+  --primary: #007BFF; /* Couleur principale */
+  --secondary: #6C757D; /* Couleur secondaire */
+  --accent: #FFC107; /* Couleur d'accentuation */
+  --font-body: 'Arial, Helvetica, sans-serif';
+  --font-heading: 'Georgia, serif';
+  --spacing: 16px; /* Base pour les espacements */
+  --text-muted: #6c757d; /* Texte désactivé */
+  --border-radius: 6px; /* Rayon par défaut des bordures */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre large */
+  --gradient-primary: linear-gradient(90deg, #007BFF, #6C757D); /* Dégradé primaire */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #ededed; /* Texte clair pour mode sombre */
+    --primary: #0d6efd;
+    --secondary: #adb5bd;
+    --accent: #FFD700;
+    --text-muted: #aaaaaa;
+    --gradient-primary: linear-gradient(90deg, #0d6efd, #adb5bd); /* Dégradé pour le mode sombre */
   }
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  margin: 0 0 0.5em;
+  line-height: 1.2;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--foreground); /* Texte clair par défaut */
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover,
+a:focus {
+  color: var(--accent);
+}
+
+button {
+  font-family: var(--font-body);
+  padding: calc(var(--spacing) / 2) var(--spacing);
+  background: var(--gradient-primary);
+  color: var(--background);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+button:hover {
+  background: var(--accent);
+  box-shadow: var(--shadow-lg);
+}
+
+input, textarea, select {
+  font-family: var(--font-body);
+  border: 1px solid var(--secondary);
+  padding: calc(var(--spacing) / 2);
+  border-radius: var(--border-radius);
+  width: 100%;
+  transition: border-color 0.2s ease-in-out;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0 0 0 1.5em;
+  list-style: disc;
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing);
+}
+
+.card {
+  background: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--secondary);
+  border-radius: var(--border-radius);
+  padding: var(--spacing);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+* {
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Animation flottante */
+@keyframes floating {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.animate-floating {
+  animation: floating 5s ease-in-out infinite;
 }

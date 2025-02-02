@@ -1,4 +1,48 @@
+"use client";
+
+import React, { useState, ChangeEvent, FormEvent } from "react";
+
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("Envoi en cours...");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus("Message envoyé avec succès !");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus("Erreur lors de l'envoi du message. Veuillez réessayer.");
+      }
+    } catch (error) {
+      console.error("Erreur:", error);
+      setStatus("Erreur lors de l'envoi du message. Veuillez réessayer.");
+    }
+  };
+
   return (
     <section id="contact" className="py-16 bg-gradient-to-r from-gray-800 to-gray-900 text-white text-center">
       {/* Titre de la section */}
@@ -27,7 +71,7 @@ const Contact = () => {
         </p>
       </div>
       {/* Formulaire */}
-      <form className="max-w-md mx-auto bg-gray-800 p-6 rounded-lg shadow-lg animate-fadeIn">
+      <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-gray-800 p-6 rounded-lg shadow-lg animate-fadeIn">
         <div className="mb-4">
           <label
             htmlFor="name"
@@ -39,6 +83,8 @@ const Contact = () => {
             type="text"
             id="name"
             name="name"
+            value={formData.name}
+            onChange={handleChange}
             className="w-full px-4 py-2 text-black rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
             placeholder="Votre nom"
           />
@@ -54,6 +100,8 @@ const Contact = () => {
             type="email"
             id="email"
             name="email"
+            value={formData.email}
+            onChange={handleChange}
             className="w-full px-4 py-2 text-black rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
             placeholder="Votre email"
           />
@@ -69,6 +117,8 @@ const Contact = () => {
             id="message"
             name="message"
             rows={4}
+            value={formData.message}
+            onChange={handleChange}
             className="w-full px-4 py-2 text-black rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
             placeholder="Votre message"
           ></textarea>
@@ -80,6 +130,7 @@ const Contact = () => {
           Envoyer
         </button>
       </form>
+      {status && <p className="mt-4 text-sm text-yellow-400 animate-fadeIn">{status}</p>}
       {/* Réseaux sociaux */}
       <div className="mt-8 flex justify-center gap-6 animate-slideUp">
         <a
